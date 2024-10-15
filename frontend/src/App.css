@@ -1,0 +1,106 @@
+/* App.css */
+
+/* Reset básico de estilo */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif; /* Use uma fonte legível */
+  background-color: #f4f4f4; /* Fundo suave */
+  color: #333; /* Texto em uma cor neutra */
+  line-height: 1.6; /* Espaçamento entre linhas */
+}
+
+/* Estilo do cabeçalho */
+header {
+  background: #4CAF50; /* Verde para o cabeçalho */
+  color: white; /* Texto em branco */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilo da área principal */
+main {
+  max-width: 1200px; /* Largura máxima para o conteúdo */
+  margin: 20px auto; /* Centralizar conteúdo */
+  padding: 20px;
+  background: white; /* Fundo branco para o conteúdo */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Estilo dos dispositivos */
+.device {
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0; /* Borda leve */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 15px; /* Espaçamento interno */
+  background: #fafafa; /* Fundo suave para cada dispositivo */
+}
+
+/* Estilo dos títulos dos dispositivos */
+.device h3 {
+  margin-bottom: 10px; /* Espaço abaixo do título */
+  color: #4CAF50; /* Cor do título */
+}
+
+/* Botões */
+button {
+  background-color: #4CAF50; /* Fundo do botão */
+  color: white; /* Texto do botão em branco */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 10px 15px; /* Espaçamento do botão */
+  cursor: pointer; /* Cursor de mão */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+button:hover {
+  background-color: #45a049; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo dos inputs */
+input[type="range"] {
+  width: 100%; /* Largura total do input */
+  margin-top: 10px; /* Espaço acima do input */
+}
+
+/* Estilo do rodapé */
+footer {
+  text-align: center; /* Centraliza o texto */
+  padding: 15px 0; /* Espaçamento do rodapé */
+  background-color: #f1f1f1; /* Fundo leve */
+  margin-top: 20px; /* Espaço acima do rodapé */
+}
+
+/* Alertas */
+.alert {
+  margin-top: 10px; /* Espaço acima do alerta */
+}
+
+.alert .status {
+  font-weight: bold; /* Negrito para status */
+}
+
+/* App.css */
+
+/* Estilo para o rodapé */
+footer {
+  text-align: center; /* Centraliza o texto */
+  padding: 15px 0; /* Espaçamento do rodapé */
+  background-color: #4CAF50; /* Cor de fundo para o rodapé */
+  color: white; /* Texto em branco */
+  position: relative; /* Pode ajudar a manter o rodapé no final */
+  margin-top: 20px; /* Espaço acima do rodapé */
+  width: 100%; /* Largura total */
+}
+
+/* Se você quiser um estilo mais glamuroso, pode adicionar sombras ou bordas */
+footer p {
+  margin: 0; /* Remove margem padrão do parágrafo */
+  font-weight: bold; /* Deixa o texto em negrito */
+}
+

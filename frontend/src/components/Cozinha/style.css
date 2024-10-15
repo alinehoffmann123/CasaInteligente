@@ -1,0 +1,87 @@
+/* Estilo geral da página */
+
+.luz, .geladeira, .fogao {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.luz p, .geladeira p, .fogao p {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+button {
+    padding: 10px 30px;
+    margin-top: 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button.luz {
+    background-color: #FFA726; /* Cor alaranjada para luz */
+    color: white;
+}
+
+button.luz:hover {
+    background-color: #FB8C00;
+}
+
+button.fogao {
+    background-color: #FF7043; /* Laranja-avermelhado para fogão */
+    color: white;
+}
+
+button.fogao:hover {
+    background-color: #F4511E;
+}
+
+button.geladeira {
+    background-color: #42A5F5; /* Azul para TV */
+    color: white;
+}
+
+button.geladeira:hover {
+    background-color: #1E88E5;
+}
+
+/* Ícones */
+i.fas {
+    font-size: 60px;
+    margin-top: 15px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.luz i.on {
+    color: #FFD700; /* Luz ligada */
+}
+
+.luz i.off {
+    color: #757575; /* Luz desligada */
+}
+
+.fogao i.on {
+    color: #FF5722; /* Fogão ligado */
+}
+
+.fogao i.off {
+    color: #B0BEC5; /* Fogão desligado */
+}
+
+.geladeira .alerta {
+    color: #E53935;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.controle-potencia input {
+    margin-top: 10px;
+}

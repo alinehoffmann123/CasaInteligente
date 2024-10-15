@@ -1,0 +1,81 @@
+/* style.css */
+
+.quarto {
+  background-color: #f0f0f0; /* Cor de fundo clara */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 400px; /* Largura máxima */
+  margin: 20px auto; /* Centraliza o quarto na página */
+}
+
+.luz {
+  display: flex; /* Usar flexbox para alinhamento */
+  flex-direction: column; /* Direção das colunas */
+  align-items: center; /* Centraliza os itens */
+  margin-bottom: 20px; /* Espaçamento entre os grupos */
+}
+
+.luz p {
+  font-size: 20px; /* Tamanho da fonte do título */
+  font-weight: bold; /* Negrito */
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+button {
+  padding: 10px 15px; /* Espaçamento interno do botão */
+  font-size: 16px; /* Tamanho da fonte do botão */
+  border: none; /* Remove borda padrão */
+  border-radius: 5px; /* Bordas arredondadas */
+  background-color: #007bff; /* Cor de fundo do botão */
+  color: #fff; /* Cor do texto do botão */
+  cursor: pointer; /* Muda o cursor para pointer */
+  transition: background-color 0.3s; /* Efeito de transição */
+}
+
+button:hover {
+  background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+.status {
+  font-size: 50px; /* Tamanho do ícone */
+  margin-top: 10px; /* Espaçamento acima do ícone */
+}
+
+.on {
+  color: #ffcc00; /* Cor para luz ligada */
+}
+
+.off {
+  color: #ccc; /* Cor para luz desligada */
+}
+
+.ventilador, .cortinas {
+  margin-top: 20px; /* Espaçamento entre seções */
+}
+
+.ventilador p, .cortinas p {
+  font-size: 20px; /* Tamanho da fonte do título */
+  font-weight: bold; /* Negrito */
+}
+
+.status {
+  font-size: 50px; /* Tamanho do ícone */
+  margin-top: 10px; /* Espaçamento acima do ícone */
+}
+
+.on {
+  color: #ffcc00; /* Cor para ventilador ligado */
+}
+
+.off {
+  color: #ccc; /* Cor para ventilador desligado */
+}
+
+.fas.fa-window-open {
+  color: #28a745; /* Cor verde para cortinas abertas */
+}
+
+.fas.fa-window-close {
+  color: #dc3545; /* Cor vermelha para cortinas fechadas */
+}

@@ -1,0 +1,109 @@
+/* Estilo geral da página */
+
+/* Seção de Luz */
+.luz, .tv, .ar-condicionado {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.luz p, .tv p, .ar-condicionado p {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+button {
+    padding: 10px 30px;
+    margin-top: 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button.luz {
+    background-color: #FFA726; /* Cor alaranjada para luz */
+    color: white;
+}
+
+button.luz:hover {
+    background-color: #FB8C00;
+}
+
+button.tv {
+    background-color: #42A5F5; /* Azul para TV */
+    color: white;
+}
+
+button.tv:hover {
+    background-color: #1E88E5;
+}
+
+button.ar-condicionado {
+    background-color: #66BB6A; /* Verde para ar-condicionado */
+    color: white;
+}
+
+button.ar-condicionado:hover {
+    background-color: #43A047;
+}
+
+/* Ícones para luz, TV e ar-condicionado */
+i.fas {
+    font-size: 60px;
+    margin-top: 15px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.luz i.on {
+    color: #FFD700; /* Luz ligada em dourado */
+}
+
+.luz i.off {
+    color: #757575; /* Luz desligada em cinza */
+}
+
+.tv i.on {
+    color: #2196F3; /* TV ligada em azul */
+}
+
+.tv i.off {
+    color: #B0BEC5; /* TV desligada em cinza claro */
+}
+
+.ar-condicionado i.on {
+    color: #66BB6A; /* Ar-condicionado ligado em verde */
+}
+
+.ar-condicionado i.off {
+    color: #B0BEC5; /* Ar-condicionado desligado em cinza claro */
+}
+
+/* Ajuste de alinhamento para ícones */
+.luz, .tv, .ar-condicionado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.luz button, .tv button, .ar-condicionado button {
+    margin-top: 20px;
+    width: 70%;
+}
+
+@media (max-width: 768px) {
+    .sala {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    button {
+        width: 90%;
+    }
+}
