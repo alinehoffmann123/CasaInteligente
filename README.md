@@ -74,16 +74,16 @@ Desenvolver uma aplicação que simule o controle remoto de dispositivos conecta
   - npm install express socket.io cors typescript ts-node-dev @types/node @types/express @types/socket.io
 
 5. Crie o arquivo tsconfig.json com o seguinte conteúdo:
-  {
-    "compilerOptions": {
-      "target": "ES6",
-      "module": "commonjs",
-      "outDir": "./dist",
-      "rootDir": "./src",
-      "strict": true,
-      "esModuleInterop": true
-    }  
-  }
+  - {
+      "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true
+      }  
+    }
 
 6. Crie a pasta src e o arquivo index.ts dentro da pasta backend/src.
 
@@ -106,15 +106,13 @@ Desenvolver uma aplicação que simule o controle remoto de dispositivos conecta
   - npm install nodemon
 
 2. Crie um arquivo nodemon.json na raiz do projeto com a seguinte configuração:
-  {
-    "watch": ["src"],
-    "ext": "ts",
-    "exec": "ts-node src/index.ts"
-  }
+  - {
+      "watch": ["src"],
+      "ext": "ts",
+      "exec": "ts-node src/index.ts"
+    }
 
 ### 3. Executando o Projeto
-
-### Backend
 
 1. Para rodar o servidor, na pasta Backend e o Frontend, execute:
   - npm start
