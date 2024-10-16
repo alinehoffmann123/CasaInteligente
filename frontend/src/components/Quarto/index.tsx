@@ -3,29 +3,32 @@ import { io } from "socket.io-client";
 import './style.css';
 
 export default function Quarto() {
+    // Conecta ao servidor Socket.io
     const socket = io('http://localhost:4000');
 
     interface EstadoInicial {
-        luzOn: boolean,
-        ventiladorOn: boolean,
-        ventiladorVelocidade: number,
-        cortinasAbertas: boolean
+        luzOn: boolean;
+        ventiladorOn: boolean;
+        ventiladorVelocidade: number;
+        cortinasAbertas: boolean;
     }
 
+    // Estado inicial do quarto
     const [estadoInicial, setEstadoInicial] = useState<EstadoInicial>({
-        luzOn: false,
-        ventiladorOn: false,
-        ventiladorVelocidade: 1,
-        cortinasAbertas: false
+          luzOn: false
+        , ventiladorOn: false
+        , ventiladorVelocidade: 1
+        , cortinasAbertas: false
     });
 
-    // Conectar ao backend e receber o estado inicial
     useEffect(() => {
+        // Escuta eventos do servidor para atualizar o estado do quarto
         socket.on('estadoInicialQuarto', (estado: EstadoInicial) => {
             setEstadoInicial(estado);
         });
 
         socket.on('acenderLuzQuarto', (novoEstado) => {
+            // Atualiza o estado da luz
             setEstadoInicial((prevState) => ({
                 ...prevState,
                 luzOn: novoEstado.luzOn,
@@ -33,6 +36,7 @@ export default function Quarto() {
         });
 
         socket.on('ligarVentiladorQuarto', (novoEstado) => {
+            // Atualiza o estado do ventilador e sua velocidade
             setEstadoInicial((prevState) => ({
                 ...prevState,
                 ventiladorOn: novoEstado.ventiladorOn,
@@ -41,12 +45,14 @@ export default function Quarto() {
         });
 
         socket.on('abrirFecharCortinas', (novoEstado) => {
+            // Atualiza o estado das cortinas
             setEstadoInicial((prevState) => ({
                 ...prevState,
                 cortinasAbertas: novoEstado.cortinasAbertas,
             }));
         });
 
+        // Limpa os listeners ao desmontar o componente
         return () => {
             socket.off('estadoInicialQuarto');
             socket.off('acenderLuzQuarto');
@@ -55,25 +61,41 @@ export default function Quarto() {
         };
     }, []);
 
+    // Função para acender a luz
     const acenderLuz = () => {
         socket.emit('acenderLuzQuarto');
-    }
+    };
 
+    // Função para ligar o ventilador
     const ligarVentilador = () => {
-        socket.emit('ligarVentiladorQuarto');
-    }
+        const novoEstadoVentilador = !estadoInicial.ventiladorOn;
 
+        if (!novoEstadoVentilador) {
+            // Se o ventilador for desligado, redefine a velocidade para 1
+            setEstadoInicial((prevState) => ({
+                ...prevState,
+                ventiladorOn: false,
+                ventiladorVelocidade: 1,
+            }));
+            socket.emit('ajustarVelocidadeVentilador', 1);
+        }
+
+        socket.emit('ligarVentiladorQuarto');
+    };
+
+    // Função para ajustar a velocidade do ventilador
     const ajustarVelocidadeVentilador = (novaVelocidade: number) => {
         socket.emit('ajustarVelocidadeVentilador', novaVelocidade);
         setEstadoInicial((prevState) => ({
             ...prevState,
-            ventiladorVelocidade: novaVelocidade
+            ventiladorVelocidade: novaVelocidade,
         }));
-    }
+    };
 
+    // Função para abrir ou fechar as cortinas
     const abrirFecharCortinas = () => {
         socket.emit('abrirFecharCortinas');
-    }
+    };
 
     return (
         <div className='quarto'>
@@ -91,28 +113,28 @@ export default function Quarto() {
                     {estadoInicial.ventiladorOn ? 'Desligar Ventilador' : 'Ligar Ventilador'}
                 </button>
                 <i className={`fas fa-fan status ${estadoInicial.ventiladorOn ? 'on' : 'off'}`} />
-                <div>
-                    <label>Velocidade:</label>
-                    <select onChange={(e) => ajustarVelocidadeVentilador(Number(e.target.value))} value={estadoInicial.ventiladorVelocidade}>
+                <label>Velocidade:</label>
+                <div className="input-ventilador">
+                    <select onChange={(e) => ajustarVelocidadeVentilador(Number(e.target.value))} value={estadoInicial.ventiladorVelocidade} disabled={!estadoInicial.ventiladorOn}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                     </select>
                 </div>
-                <p>Velocidade atual: {estadoInicial.ventiladorVelocidade}</p> {/* Exibe a velocidade atual */}
+                <p>Velocidade atual: {estadoInicial.ventiladorVelocidade}</p>
             </div>
 
             <div className='cortinas'>
-              <p>Cortinas</p>
-              <button onClick={abrirFecharCortinas}>
-                  {estadoInicial.cortinasAbertas ? 'Fechar Cortinas' : 'Abrir Cortinas'}
-              </button>
-              {estadoInicial.cortinasAbertas ? (
-                  <img src="cortina-aberta.png" alt="Cortinas Abertas" style={{ width: '50px', height: 'auto' }} />
-              ) : (
-                  <img src="cortinas-fechada.png" alt="Cortinas Fechadas" style={{ width: '50px', height: 'auto' }} />
-              )}
-          </div>
+                <p>Cortinas</p>
+                <button onClick={abrirFecharCortinas}>
+                    {estadoInicial.cortinasAbertas ? 'Fechar Cortinas' : 'Abrir Cortinas'}
+                </button>
+                {estadoInicial.cortinasAbertas ? (
+                    <img className="style-cortina" src="cortina-aberta.png" alt="Cortinas Abertas" style={{ width: '60px', height: 'auto' }} />
+                ) : (
+                    <img className="style-cortina" src="cortinas-fechada.png" alt="Cortinas Fechadas" style={{ width: '60px', height: 'auto' }} />
+                )}
+            </div>
         </div>
-    )
+    );
 }

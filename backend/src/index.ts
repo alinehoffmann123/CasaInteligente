@@ -17,49 +17,47 @@ const io = new Server(server, {
 
 // Estado inicial dos dispositivos
 let dispositivosSala = {
-    luzOn: false,
-    tvOn: false,
-    arOn: false,
-    arTemp: 22,  // Temperatura padrão
-    tvChannel: 0  // Canal padrão
+      luzOn: false
+    , tvOn: false
+    , arOn: false
+    , arTemp: 22 // Temperatura padrão
+    , tvChannel: 0  // Canal padrão
 };
 
 let dispositivosCozinha = {
-  luzOn: false,
-  geladeiraTemperatura: 3,
-  geladeiraAlerta: false,
-  fogaoOn: false,
-  fogaoPotencia: 1        
-};
-
-// Função para ajustar a temperatura da geladeira automaticamente
-const ajustarTemperaturaGeladeiraAutomaticamente = () => {
-  setInterval(() => {
-      const temperaturaAtual = dispositivosCozinha.geladeiraTemperatura;
-
-      if (temperaturaAtual > 3) {
-          dispositivosCozinha.geladeiraTemperatura -= 1;
-      } else if (temperaturaAtual < 2) {
-          dispositivosCozinha.geladeiraTemperatura += 1;
-      }
-
-      if (dispositivosCozinha.geladeiraTemperatura > 5) {
-          dispositivosCozinha.geladeiraAlerta = true;
-      } else {
-          dispositivosCozinha.geladeiraAlerta = false;
-      }
-
-      io.emit('geladeiraTemperatura', dispositivosCozinha.geladeiraTemperatura);
-      io.emit('geladeiraAlerta', dispositivosCozinha.geladeiraAlerta);
-  }, 5000);
+    luzOn: false
+  , geladeiraTemperatura: 3
+  , geladeiraAlerta: false
+  , fogaoOn: false
+  , fogaoPotencia: 1        
 };
 
 let dispositivosQuarto = {
-  luzOn: false,
-  ventiladorOn: false,
-  ventiladorVelocidade: 1,
-  cortinasAbertas: false,
+    luzOn: false
+  , ventiladorOn: false
+  , ventiladorVelocidade: 1
+  , cortinasAbertas: false
 };
+
+// Função para gerar uma temperatura aleatória entre 0 e 10
+function gerarTemperaturaAleatoria() {
+    const temperatura = Math.floor(Math.random() * 11); // Gera número entre 0 e 10
+    dispositivosCozinha.geladeiraTemperatura = temperatura;
+  
+    // Envia a nova temperatura para o frontend
+    io.emit('geladeiraTemperatura', dispositivosCozinha.geladeiraTemperatura);
+
+    // Verifica se precisa ativar o alerta
+    if (temperatura > 5) {
+        dispositivosCozinha.geladeiraAlerta = true;
+    } else {
+        dispositivosCozinha.geladeiraAlerta = false;
+    }
+    io.emit('geladeiraAlerta', dispositivosCozinha.geladeiraAlerta);
+}
+
+// Define um intervalo para alterar a temperatura da geladeira automaticamente
+setInterval(gerarTemperaturaAleatoria, 3000); // Muda a temperatura a cada 3 segundos
 
 // Escuta os eventos de conexão do socket
 io.on('connection', (socket) => {
@@ -70,7 +68,7 @@ io.on('connection', (socket) => {
     socket.emit('estadoInicialCozinha', dispositivosCozinha);
     socket.emit('estadoInicialQuarto', dispositivosQuarto);
 
-    // Manipulando os eventos e mudanças do estado dos dispositivos da sala
+    // Sala
     socket.on('acenderLuzSala', () => {
         dispositivosSala.luzOn = !dispositivosSala.luzOn;
         io.emit('acenderLuzSala', dispositivosSala);
@@ -125,7 +123,8 @@ io.on('connection', (socket) => {
         io.emit('atualizarPotenciaFogao', novaPotencia); // Emite a nova potência
     });
 
-    // Manipulando os eventos e mudanças do estado dos dispositivos do quarto
+
+    // Quarto
     socket.on('acenderLuzQuarto', () => {
       dispositivosQuarto.luzOn = !dispositivosQuarto.luzOn;
       io.emit('acenderLuzQuarto', dispositivosQuarto);
@@ -146,7 +145,7 @@ io.on('connection', (socket) => {
         io.emit('abrirFecharCortinas', dispositivosQuarto);
     });
 });
-ajustarTemperaturaGeladeiraAutomaticamente();
+
 // Iniciar Servidor
 const PORT = 4000;
 server.listen(PORT, () => {

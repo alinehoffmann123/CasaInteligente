@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import './style.css';
 
 export default function Sala() {
     const socket = io('http://localhost:4000');
 
     interface EstadoLuz {
-        luzOn: boolean,
+        luzOn: boolean
     }
 
     const [estadoLuz, setEstadoLuz] = useState<EstadoLuz>({

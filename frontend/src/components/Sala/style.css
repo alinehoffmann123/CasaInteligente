@@ -1,10 +1,72 @@
-/* Estilo geral da página */
+.sala {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 33.33%;
+    margin: 20px auto;
+}
 
-/* Seção de Luz */
+.luz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.tv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.ar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.luz p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tv p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+} 
+
+.ar p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+} 
+
 .luz, .tv, .ar-condicionado {
     margin-bottom: 30px;
     padding: 20px;
-    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -27,7 +89,7 @@ button {
 }
 
 button.luz {
-    background-color: #FFA726; /* Cor alaranjada para luz */
+    background-color: #FFA726;
     color: white;
 }
 
@@ -36,7 +98,7 @@ button.luz:hover {
 }
 
 button.tv {
-    background-color: #42A5F5; /* Azul para TV */
+    background-color: #42A5F5;
     color: white;
 }
 
@@ -45,7 +107,7 @@ button.tv:hover {
 }
 
 button.ar-condicionado {
-    background-color: #66BB6A; /* Verde para ar-condicionado */
+    background-color: #66BB6A;
     color: white;
 }
 
@@ -53,7 +115,6 @@ button.ar-condicionado:hover {
     background-color: #43A047;
 }
 
-/* Ícones para luz, TV e ar-condicionado */
 i.fas {
     font-size: 60px;
     margin-top: 15px;
@@ -62,30 +123,29 @@ i.fas {
 }
 
 .luz i.on {
-    color: #FFD700; /* Luz ligada em dourado */
+    color: #FFD700;
 }
 
 .luz i.off {
-    color: #757575; /* Luz desligada em cinza */
+    color: #757575;
 }
 
 .tv i.on {
-    color: #2196F3; /* TV ligada em azul */
+    color: #2196F3;
 }
 
 .tv i.off {
-    color: #B0BEC5; /* TV desligada em cinza claro */
+    color: #B0BEC5;
 }
 
 .ar-condicionado i.on {
-    color: #66BB6A; /* Ar-condicionado ligado em verde */
+    color: #66BB6A;
 }
 
 .ar-condicionado i.off {
-    color: #B0BEC5; /* Ar-condicionado desligado em cinza claro */
+    color: #B0BEC5;
 }
 
-/* Ajuste de alinhamento para ícones */
 .luz, .tv, .ar-condicionado {
     display: flex;
     flex-direction: column;
@@ -106,4 +166,8 @@ i.fas {
     button {
         width: 90%;
     }
+}
+
+.ar-condicionado-temp {
+    padding: 5px;
 }

@@ -7,11 +7,12 @@ import Quarto from './components/Quarto';
 const App: React.FC = () => {
   return (
     <div className='casa'>
-      <h1>Casa Inteligente</h1>
-      <Sala />
-      <Cozinha />
-      <Quarto />
-
+      <h1 className='titulo-casa'>Casa Inteligente</h1>
+      <div className='comodos-casa'>
+        <Sala />
+        <Cozinha />
+        <Quarto />
+      </div>
       {/* Rodapé */}
       <footer>
         <p>Desenvolvido por: Aline Fernanda Hoffmann</p>
